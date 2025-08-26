@@ -1,0 +1,764 @@
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+
+@import "tailwindcss";
+
+.poppins-thin {
+
+  font-family: "Poppins", sans-serif;
+  font-weight: 100;
+  font-style: normal;  
+  src: url('../fonts/Poppins-Thin.ttf') format('ttf');
+}
+
+.poppins-extralight {
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
+  font-style: normal;
+  src: url('../fonts/Poppins-ExtraLight.ttf') format('ttf');
+}
+
+.poppins-light {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  src: url('../fonts/Poppins-Light.ttf') format('ttf');
+}
+
+.poppins-regular {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  src: url('../fonts/Poppins-Regular.ttf') format('ttf');
+}
+
+.poppins-medium {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  src: url('../fonts/Poppins-Medium.ttf') format('ttf');
+}
+
+.poppins-semibold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+   src: url('../fonts/Poppins-SemiBold.ttf') format('ttf');
+}
+
+.poppins-bold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+   src: url('../fonts/Poppins-Bold.ttf') format('ttf');
+}
+
+.poppins-extrabold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+   src: url('../fonts/Poppins-ExtraBold.ttf') format('ttf');
+}
+
+.poppins-black {
+  font-family: "Poppins", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+   src: url('../fonts/Poppins-Black.ttf') format('ttf');
+}
+
+
+ @font-face {
+    font-family: 'Brother Signature Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Brother Signature Regular'), url('../fonts/BrotherSignature-7BWnK.otf') format('woff');
+  }
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --reddark: #bc3908;
+    --maroon: #a57246;
+    --white:#ffffff;
+
+
+    --accent: #ff5b2e;   /* border color */
+    --bg1: #0ea5e9;      /* demo background */
+    --bg2: #a78bfa;
+
+    --saffron:#fe6300;
+   --green: #046A38
+
+}
+
+body {
+    overflow-x: hidden;
+    font-family: 'Poppins', sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;   
+    background: rgba(212, 241, 244, 0.04);     
+}
+
+.h-90{
+  max-height: 100px;
+  height: 100%;
+}
+
+
+.animated-indian-flag-line {
+  width: 100%;
+  height: 5px;
+  background-image: linear-gradient(90deg, #FF9933, #FFFFFF, #138808);
+  background-size: 200% 100%;
+  animation: gradient-shift 4s linear infinite;
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 0%;
+  }
+}
+
+
+.text-saffron{
+  color: var(--saffron);
+}
+.text-green{
+  color: var(--green);
+}
+.fill-saffron{
+  fill:var(--saffron)
+}
+.fill-green{
+  fill: var(--green);
+}
+.logo {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.text-darkRed {
+    color: var(--reddark);
+}
+
+.text-maroon {
+    color: var(--maroon);
+}
+
+.rounded-18 {
+    border-radius: 19px;
+}
+
+.border-bg-maroon {
+    border-color: #f2dbba;
+}
+
+
+
+
+#button {
+  display: inline-block;
+  background-color: #FF9933;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  border-radius: 4px;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  transition: background-color .3s, opacity .5s, visibility .5s;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+}
+
+#button svg {
+  width: 15px;
+}
+
+#button:hover {
+  cursor: pointer;
+  background-color: #fa8c1d;
+}
+
+#button:active {
+  background-color: #fa8c1d;
+}
+
+#button.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+
+
+
+
+
+main {
+    width: 100%;
+    background: url(../images/bg.png) no-repeat;
+    background-position: left center;
+}
+.rightbg {
+    width: 100%;
+    background: url(../images/bg2.png) no-repeat;
+    background-position: right top;
+}
+
+.h-50{
+  max-height: 50px;
+  height: 100%;
+}
+
+
+
+
+.footer {
+    width: 100%;
+    background: #10083f;    
+}
+.copyright {
+    width: 100%;
+    background: rgba(5, 5, 5, 0.35);   
+    
+}
+
+.bg-blur {
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.1);    
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.headingUnderline {
+  width: 100%;
+  display: block;
+  text-align: center;    
+  position: relative;
+  margin: 0px 0 30px;
+}
+
+.headingUnderline::after {
+  content: '';
+  position: absolute;
+  margin: auto;
+  left:0;
+  right:0;
+  width: 50px;
+  height: 8px;
+  background-color: var(--saffron);
+  top: calc(100% + 10px);
+  left: 0;
+}
+
+.headingUnderline::before {
+  content: '';
+  position: absolute;
+  margin: auto;
+  left:0;
+  right:0;
+  width: 100px;
+  height: 2px;
+  background-color: var(--green);
+  top: calc(100% + 13px);
+  left: 0;
+}
+.subHeadings{
+    color: var(--green);    
+    font-size: inherit;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    position: relative;
+    padding-bottom: 5px;
+    margin: 11px 0 20px;
+}
+.subHeadings::after{
+    position: absolute;
+    content: '';
+    width: 40px;
+    height: 5px;
+    background: var(--green);
+    top:100%;
+    left: 0;
+}
+.subHeadings::before{
+    position: absolute;
+    content: '';
+    width: 63px;
+    height: 1px;
+    background: var(--saffron);
+    top:calc(100% + 2px);
+    left: 40px;
+}
+
+
+
+.processing-contact-us-bg {    
+    background: #F6FAFE;     
+    background: #f6f2ed;
+    overflow: hidden;
+   background-image: url('../images/MSME.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%; 
+}
+.globe{
+  width: 100%;
+  max-height: 600px; 
+  height: 100%;
+  
+}
+.inner-img-one {
+  position: absolute;
+  z-index: 1;
+  bottom: 0;    
+  overflow: hidden;
+}
+.inner-img-two{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ 
+  bottom: 0;
+}
+.worldRotate {
+    animation: worldRotate 20s linear infinite;
+    transform-origin: center center;
+}
+@keyframes worldRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+.contact-info-item {
+  display: flex;
+  margin-bottom: 30px;
+}
+
+.contact-info-icon {
+  height: 70px;
+  width: 70px;
+  text-align: center;
+  border-radius: 50%;
+}
+
+.contact-info-icon i {
+  font-size: 30px;
+  line-height: 70px;
+}
+
+.contact-info-content {
+  margin-left: 20px;
+}
+
+.contact-info-content h4 {  
+  font-size: 1.4em;
+  margin-bottom: 5px;
+}
+
+.contact-info-content p {
+   line-height: 1.5;
+}
+
+@media (max-width: 767.98px) { 
+
+  .contact-info-icon {
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  border-radius: 50%;
+}
+
+.contact-info-icon i {
+  font-size: 22px;
+  line-height: 50px;
+
+ }
+
+}
+
+.saffron-white-green-bg {   
+    width: 100%;
+    height: inherit;  
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 153, 51, 0.2),  /* Light Saffron (20% opacity) */
+        rgba(255, 255, 255, 0.2),  /* Light White (20% opacity) */
+        rgba(19, 136, 8, 0.2)      /* Light Green (20% opacity) */
+    );
+}
+
+
+
+
+.glossy-background {    
+    background-color: rgba(255, 255, 255, 0.15); 
+    backdrop-filter: blur(5px); 
+    border-radius: 10px; 
+    padding: 20px; 
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1); 
+    border: 2px solid rgba(255, 255, 255, 0.18); 
+} */
+
+/* If you want to add a subtle highlight effect (optional) */
+ .glossy-background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to top, rgba(255, 255, 255, 0.2), transparent);
+    border-radius: 10px 10px 0 0; 
+    pointer-events: none; 
+}
+
+.relative button::after {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(255, 255, 255, 0.4);
+animation: pulse 2s infinite cubic-bezier(0.66, 0, 0, 1);
+z-index: -1;
+}
+
+@keyframes pulse {
+0% {
+transform: scale(1);
+opacity: 0.5;
+}
+100% {
+transform: scale(1.5);
+opacity: 0;
+}
+}
+
+
+/* .glossyBg{
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 20px rgb(0 0 0 / 40%);
+    transition: transform 0.3s;
+    border: solid 1px #ffffff;
+} */
+
+.glossyBg {
+  position: relative;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 20px rgb(0 0 0 / 40%);
+  border: 1px solid transparent;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.glossyBg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  background: linear-gradient(270deg, #FF9933, #FFFFFF, #138808);
+  background-size: 600% 600%;
+  animation: borderAnim 6s linear infinite;
+  z-index: -1;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: destination-out;
+  border-radius: 16px;
+}
+@keyframes borderAnim {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+
+.wave-text span {
+    display: inline-block;
+    font-size: 4rem;
+    animation: wave 2s ease-in-out infinite;
+}
+
+.wave-text span:nth-child(1) {
+    animation-delay: 0s;
+}
+.wave-text span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+.wave-text span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+.wave-text span:nth-child(4) {
+    animation-delay: 0.6s;
+}
+
+@keyframes wave {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+
+.font-borther{
+  font-family: 'Brother Signature Regular';
+}
+
+
+/* https://codepen.io/alphardex/pen/WNNVJeZ   */
+
+
+.social {
+  position: fixed;
+  top: 30%;
+  right: 0; 
+  z-index: 9;
+}
+
+.social ul {
+  list-style-type: none;
+  padding: 0;
+  transform: translatex(244px);
+}
+
+.social ul li {
+  display: block;
+  margin: 5px;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 300px;
+  text-align: left; 
+  padding: 10px;
+  border-radius: 30px 0 0 30px; 
+  transition: all 1s;
+}
+
+.social ul li:hover {
+  transform: translatex(-110px); 
+}
+
+.social ul li.twitter:hover {
+  background-color: #55acee;
+}
+
+.social ul li.facebook:hover {
+  background-color: #3b5999;
+}
+
+.social ul li.google-plus:hover {
+  background-color: #dd4b39;
+}
+
+.social ul li.instagram:hover {
+  background-color: #e4405f;
+}
+
+.social ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.social ul li i {
+  text-align: center;
+  display: inline-table;
+  margin-right: 14px; 
+  color: black;
+  background-color: white;
+  padding: 10px;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 20px;
+  transform: rotate(0deg);
+}
+
+.social ul li:hover i {
+  transform: rotate(360deg);
+  transition: all 1s;
+}
+
+.social ul li i {
+text-align: center;
+display: inline-table ;
+margin-left: 1px;
+color: black;
+background-color: white;
+padding: 10px;
+border-radius: 50%;
+width: 20px;
+height: 20px;
+font-size: 20px;
+transform: rotate(0deg);
+}
+
+.social ul li:hover i {
+   transform: rotate(360deg);
+transition: all 1s;
+}
+  
+.translate-container {
+    position: relative;
+}
+
+/* Custom Google Translate dropdown */
+.custom-translate select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #333;
+    background-color: #fff;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    width: 200px;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover effect on dropdown */
+.custom-translate select:hover {
+    border-color: #007BFF;
+}
+
+/* Focus effect on dropdown */
+.custom-translate select:focus {
+    border-color: #0056b3;
+    box-shadow: 0 0 5px rgba(0, 91, 187, 0.5);
+}
+
+/* Custom arrow icon */
+.custom-translate select::-ms-expand {
+    display: none;
+}
+
+.custom-translate::after {
+    content: '▼';
+    position: absolute;
+    top: 12px;
+    right: 10px;
+    color: #007BFF;
+    font-size: 14px;
+    pointer-events: none;
+}
+
+/* Custom styles for the translation container */
+#google_translate_element {
+    display: inline-block;
+    width: auto;
+}
+
+
+/* slider */
+.swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+}
+
+/* ------------------ FLIP CARD CSS ------------------ */
+
+/* The outer container acts as a viewport for the 3D space */
+.flip-card {
+    background-color: transparent;
+    width: 300px;
+    height: 400px;
+    perspective: 1000px; /* This is essential for the 3D effect */
+}
+
+/* This is the element that will be flipped */
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s; /* Controls the flip animation speed */
+    transform-style: preserve-3d; /* Key property for preserving 3D space */
+}
+
+/* When the parent `.flip-card` is hovered, flip the inner element */
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+/* Position and hide the back faces of the front and back cards */
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* For Safari */
+    backface-visibility: hidden; /* Hides the back of the element */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Styling for the front face */
+.flip-card-front {
+    background-color: #bbb;
+}
+
+.flip-card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Styling for the back face */
+.flip-card-back {
+    background-color: #2980b9;
+    color: white;
+    transform: rotateY(180deg); /* Pre-rotate to hide it initially */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.flip-card-back h3 {
+    margin-top: 0;
+}
