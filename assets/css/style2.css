@@ -880,7 +880,8 @@ transition: all 1s;
 }
 .flip-card-back {
     background-color: #2980b9;
-    color: white;
+    background: linear-gradient(to bottom, rgba(255, 153, 51, 0.2), rgba(255, 255, 255, 0.2), rgba(19, 136, 8, 0.2));
+    /* color: white; */
     transform: rotateY(180deg); 
     display: flex;
     flex-direction: column;
