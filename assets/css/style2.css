@@ -580,6 +580,10 @@ opacity: 0;
   background-color: #3b5999;
 }
 
+.social ul li.linkedin:hover{
+  background-color:#0077B5;
+}
+
 .social ul li.google-plus:hover {
   background-color: #dd4b39;
 }
@@ -762,3 +766,4 @@ transition: all 1s;
 .flip-card-back h3 {
     margin-top: 0;
 }
+
