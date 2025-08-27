@@ -937,3 +937,34 @@ transition: all 1s;
     transform: translateY(-5px);
   }
 }
+
+
+
+
+
+
+.semeImag{
+  max-height: 60px; height: 100%; width:auto; position: relative; top:-20px
+}
+.text-shadw-connect{
+  position: relative; top:-20px; text-shadow: 2px 2px #FF0000;
+}
+.border-image::after {
+  content: url("../images/side-border.svg");
+  position: absolute;
+  top: 50%;
+  right: 0; 
+  transform: translateY(-50%);     
+}
+
+@media (max-width: 767.98px) { 
+  .border-bottom-image::before {
+    content: url("../images/bottom_border.svg");
+    position: absolute;
+    left: 50%;
+    top:0;
+    transform: translateX(-50%);
+    line-height: 0;
+  }
+}
+
