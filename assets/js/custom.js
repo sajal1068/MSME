@@ -190,3 +190,107 @@
                 });
             });
         });
+
+        // tabs
+
+        // Initialize the first word cloud when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize desktop and mobile clouds for the first tab
+            createWordCloud('cloud1', translationSets.common);
+            createWordCloud('cloud1-mobile', translationSets.common);
+            
+            // Set up tab switching functionality
+            const tabLinks = document.querySelectorAll('.tab-link');
+            const cloudSVGs = document.querySelectorAll('.cloud-svg');
+
+            // Function to handle tab switching for desktop
+            function switchDesktopTab(tabElement, targetTab) {
+                // Deactivate all tabs
+                tabLinks.forEach((btn) => btn.classList.remove('active'));
+                cloudSVGs.forEach((svg) => {
+                    // Hide active-circles group by default
+                    const activeGroup = svg.querySelector('.active-circles');
+                    if (activeGroup) {
+                        activeGroup.style.display = 'none';
+                    }
+                });
+
+                // Activate the clicked tab and show corresponding SVG's active-circles
+                tabElement.classList.add('active');
+                const svg = document.querySelector(`[data-tab="${targetTab}"]`);
+                const activeGroup = svg.querySelector('.active-circles');
+                if (activeGroup) {
+                    activeGroup.style.display = 'block';
+                }
+
+                // Switch tab content for desktop
+                const targetContent = document.getElementById(targetTab);
+                const tabContents = document.querySelectorAll('.tab-content');
+                tabContents.forEach((content) => content.classList.remove('active'));
+                if (targetContent) targetContent.classList.add('active');
+                
+                // Initialize the word cloud for this tab if it hasn't been initialized yet
+                if (targetTab === 'tab1') {
+                    if (!initializedClouds.cloud1) createWordCloud('cloud1', translationSets.common);
+                } else if (targetTab === 'tab2') {
+                    if (!initializedClouds.cloud2) createWordCloud('cloud2', translationSets.asian);
+                } else if (targetTab === 'tab3') {
+                    if (!initializedClouds.cloud3) createWordCloud('cloud3', translationSets.pacific);
+                }
+            }
+
+            // Function to handle accordion for mobile
+            function switchMobileTab(tabElement, targetTab) {
+                // Get all accordion contents
+                const accordionContents = document.querySelectorAll('.accordion-content');
+                
+                // Close all accordion contents
+                accordionContents.forEach((content) => {
+                    content.style.display = 'none';
+                });
+                
+                // Remove active class from all tabs
+                tabLinks.forEach((t) => t.classList.remove('active'));
+                
+                // Activate the clicked tab and open its content
+                tabElement.classList.add('active');
+                const content = tabElement.nextElementSibling;
+                content.style.display = 'block';
+                
+                // Initialize the word cloud for this tab if it hasn't been initialized yet
+                if (targetTab === 'tab1') {
+                    if (!initializedClouds['cloud1-mobile']) createWordCloud('cloud1-mobile', translationSets.common);
+                } else if (targetTab === 'tab2') {
+                    if (!initializedClouds['cloud2-mobile']) createWordCloud('cloud2-mobile', translationSets.asian);
+                } else if (targetTab === 'tab3') {
+                    if (!initializedClouds['cloud3-mobile']) createWordCloud('cloud3-mobile', translationSets.pacific);
+                }
+            }
+
+            // Add click event listeners to tabs
+            tabLinks.forEach((btn) => {
+                btn.addEventListener('click', function() {
+                    const targetTab = this.getAttribute('data-tab');
+                    
+                    // Check if we're on mobile or desktop
+                    if (window.innerWidth <= 640) {
+                        // Mobile view - use accordion
+                        switchMobileTab(this, targetTab);
+                    } else {
+                        // Desktop view - use tabs
+                        switchDesktopTab(this, targetTab);
+                    }
+                });
+            });
+
+            // Initialize mobile view if needed
+            if (window.innerWidth <= 640) {
+                // Hide all accordion contents except the first one
+                const accordionContents = document.querySelectorAll('.accordion-content');
+                accordionContents.forEach((content, index) => {
+                    if (index !== 0) {
+                        content.style.display = 'none';
+                    }
+                });
+            }
+        });

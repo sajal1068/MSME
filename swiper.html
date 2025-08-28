@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Swiper Flip Cards – Auto Height</title>
+
+  <!-- Swiper CSS -->
+   <link href="assets/css/swiper-bundle.min.css" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="https://unpkg.com/swiper@9/swiper-bundle.min.css"/> -->
+
+  <style>
+    :root{
+      /* change this to 4/5, 3/4, 16/9 etc. */
+      --card-aspect: 4/5;
+    }
+
+    body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial; background:#f7f7fb; padding: 24px; }
+
+    /* Swiper base */
+    .swiper { width: 100%; height: auto; }
+    .swiper-wrapper { align-items: stretch; }
+    .swiper-slide {
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      height: auto;       /* allow content to define height */
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    /* Ratio box gives a real height without fixed px */
+    .ratio-box {
+      width: 100%;
+      aspect-ratio: var(--card-aspect); /* 👈 intrinsic height */
+      position: relative;
+    }
+
+    /* Flip card fills the ratio box */
+    .flip-card {
+      position: absolute;
+      inset: 0;
+      background: transparent;
+      width: 100%;
+      height: 100%;     /* now 100% has a reference (ratio-box) */
+      perspective: 1000px;
+    }
+
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+    }
+    .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
+
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      inset: 0;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 18px rgba(0,0,0,.12);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .flip-card-front {
+      background: #fff;
+    }
+    .image-content { position: relative; flex: 1 1 auto; }
+    .card-image, .card-img {
+      width: 100%; height: 100%;
+    }
+    .card-img {
+      display: block;
+      object-fit: cover; /* fill nicely */
+    }
+    .card-content {
+      padding: 14px 16px;
+      text-align: center;
+      background: #fff;
+    }
+    .name { margin: 0; font-size: 18px; font-weight: 700; }
+    .description { margin: 4px 0 0; font-size: 14px; opacity: .75; }
+
+    .flip-card-back {
+      background: linear-gradient(to bottom,
+                  rgba(255,153,51,.2),
+                  rgba(255,255,255,.2),
+                  rgba(19,136,8,.2));
+      transform: rotateY(180deg);
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      gap: 10px;
+      color: #0f172a;
+    }
+    .button {
+      appearance: none;
+      border: 0;
+      padding: 10px 14px;
+      border-radius: 8px;
+      background: #0ea5e9;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    /* Nav / pagination */
+    .swiper-button-next, .swiper-button-prev { color: #111827; }
+    .swiper-pagination-bullet { background: #111827; }
+  </style>
+</head>
+<body>
+
+  <div class="swiper slide-container">
+    <div class="swiper-wrapper">
+
+      <!-- Slide 1 -->
+      <div class="swiper-slide">
+        <div class="ratio-box">
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <div class="image-content">
+                  <div class="card-image">
+                    <img src="assets/images/ev-power.jpg" alt="image" class="card-img">
+                  </div>
+                </div>
+                <div class="card-content">
+                  <h2 class="name">Rajesh Mukhija</h2>
+                  <p class="description">Founder</p>
+                </div>
+              </div>
+              <div class="flip-card-back">
+                <h2 class="text-xl font-bold">About Rajesh</h2>
+                <p class="text-sm">Founder with 15+ years of leadership experience.</p>
+                <button class="button">Know More</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="swiper-slide">
+        <div class="ratio-box">
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <div class="image-content">
+                  <div class="card-image">
+                    <img src="assets/images/ev-power.jpg" alt="image" class="card-img">
+                  </div>
+                </div>
+                <div class="card-content">
+                  <h2 class="name">Rajesh Mukhija</h2>
+                  <p class="description">Founder</p>
+                </div>
+              </div>
+              <div class="flip-card-back">
+                <h2 class="text-xl font-bold">About Rajesh</h2>
+                <p class="text-sm">Founder with 15+ years of leadership experience.</p>
+                <button class="button">Know More</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="swiper-slide">
+        <div class="ratio-box">
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <div class="image-content">
+                  <div class="card-image">
+                    <img src="assets/images/ev-power.jpg" alt="image" class="card-img">
+                  </div>
+                </div>
+                <div class="card-content">
+                  <h2 class="name">Rajesh Mukhija</h2>
+                  <p class="description">Founder</p>
+                </div>
+              </div>
+              <div class="flip-card-back">
+                <h2 class="text-xl font-bold">About Rajesh</h2>
+                <p class="text-sm">Founder with 15+ years of leadership experience.</p>
+                <button class="button">Know More</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add more slides... -->
+
+    </div>
+
+    <!-- Controls -->
+    <div class="swiper-button-next swiper-navBtn"></div>
+    <div class="swiper-button-prev swiper-navBtn"></div>
+    <div class="swiper-pagination"></div>
+  </div>
+
+  <!-- Swiper JS -->
+    <script src="assets/js/swiper-bundle.min.js"></script> 
+  <!-- <script src="https://unpkg.com/swiper@9/swiper-bundle.min.js"></script> -->
+  <script>
+    const swiper = new Swiper(".slide-container", {
+      slidesPerView: 3,
+      spaceBetween: 25,
+      loop: true,
+      autoplay: { delay: 5000 },
+      centeredSlides: true,           // ✅ correct key (not centerSlide)
+      grabCursor: true,
+      autoHeight: true,               // ✅ adapt height to current slide
+      observeParents: true,           // ✅ remeasure when parents change
+      observer: true,                 // ✅ watch for slide changes
+      preloadImages: true,
+      watchSlidesProgress: true,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+        dynamicBullets: true,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      breakpoints: {
+        0:   { slidesPerView: 1 },
+        520: { slidesPerView: 2 },
+        950: { slidesPerView: 3 },
+      },
+      on: {
+        imagesReady() {
+          this.updateAutoHeight(300);
+        },
+        slideChange() {
+          this.updateAutoHeight(300);
+        }
+      }
+    });
+
+    // Optional: If images load later due to cache behavior
+    document.querySelectorAll('.card-img').forEach(img => {
+      if (img.complete) return;
+      img.addEventListener('load', () => swiper.updateAutoHeight(300));
+    });
+  </script>
+</body>
+</html>

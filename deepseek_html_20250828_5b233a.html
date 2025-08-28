@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Swiper Flip Cards – Auto Height</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8f9fa;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    /* Slider container with relative positioning */
+    .slide-container {
+      position: relative;
+      padding: 0 40px; /* Space for navigation arrows */
+    }
+    
+    .swiper {
+      width: 100%; 
+      height: auto; 
+    }
+    
+    .swiper-slide {
+      display: flex;
+      justify-content: center;
+      align-items: stretch; /* Make all cards same height */
+      height: auto;
+      padding: 15px 0; /* Add some vertical spacing */
+    }
+    
+    /* Card styling with fixed height */
+    .card {
+      width: 100%;
+      height: 400px; /* Fixed height for consistent cards */
+    }
+    
+    .flip-card {
+      background-color: transparent;
+      width: 100%;
+      height: 100%;
+      perspective: 1000px; 
+    }
+    
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+    }
+    
+    .flip-card:hover .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+    
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden; 
+      backface-visibility: hidden; 
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    
+    .flip-card-front {
+      background-color: #f8f9fa;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .flip-card-front img {
+      width: 100%;
+      height: 60%;
+      object-fit: cover;
+    }
+    
+    .image-content {
+      position: relative;
+    }
+    
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.5) 100%);
+    }
+    
+    .card-content {
+      padding: 15px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    .name {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 5px;
+    }
+    
+    .description {
+      color: #6c757d;
+      font-size: 1rem;
+    }
+    
+    .flip-card-back {
+      background: linear-gradient(to bottom, rgba(255, 153, 51, 0.2), rgba(255, 255, 255, 0.2), rgba(19, 136, 8, 0.2));
+      transform: rotateY(180deg); 
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    
+    .flip-card-back h3 {
+      margin-top: 0;
+      color: #333;
+      font-size: 1.5rem;
+    } 
+    
+    .flip-card-back p {
+      color: #555;
+      margin-bottom: 15px;
+    }
+    
+    .button {
+      background-color: #2980b9;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s;
+    }
+    
+    .button:hover {
+      background-color: #2471a3;
+    }
+    
+    /* Navigation arrows positioned outside */
+    .swiper-navBtn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      background-color: #fff;
+      border-radius: 50%;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .swiper-navBtn:hover {
+      background-color: #2980b9;
+      color: white;
+    }
+    
+    .swiper-button-next {
+      right: 0;
+    }
+    
+    .swiper-button-prev {
+      left: 0;
+    }
+    
+    .swiper-navBtn::before,
+    .swiper-navBtn::after {
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      font-size: 20px;
+    }
+    
+    .swiper-button-next::after {
+      content: '\f054';
+    }
+    
+    .swiper-button-prev::after {
+      content: '\f053';
+    }
+    
+    /* Pagination styling */
+    .swiper-pagination {
+      position: relative;
+      margin-top: 20px;
+    }
+    
+    .swiper-pagination-bullet {
+      width: 12px;
+      height: 12px;
+      background-color: #2980b9;
+      opacity: 0.5;
+    }
+    
+    .swiper-pagination-bullet-active {
+      opacity: 1;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .slide-container {
+        padding: 0 30px;
+      }
+      
+      .card {
+        height: 380px;
+      }
+      
+      .swiper-navBtn {
+        width: 35px;
+        height: 35px;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .slide-container {
+        padding: 0 25px;
+      }
+      
+      .card {
+        height: 350px;
+      }
+      
+      .name {
+        font-size: 1.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+   <section class="container">
+      <div class="slide-container swiper">
+        <div class="slide-content">
+          <div class="card-wrapper swiper-wrapper">
+
+            <!-- Card with flip effect -->
+            <div class="card swiper-slide">
+              <div class="flip-card">
+                <div class="flip-card-inner">
+
+                  <!-- Front -->
+                  <div class="flip-card-front">
+                    <div class="image-content">
+                      <span class="overlay"></span>
+                      <div class="card-image">
+                        <img src="assets/images/ev-power.jpg" alt="Parul Soni" class="card-img">
+                      </div>
+                    </div>
+                    <div class="card-content">
+                      <h2 class="name">Parul Soni</h2>
+                      <p class="description">Co-Founder</p>
+                    </div>
+                  </div>
+
+                  <!-- Back -->
+                  <div class="flip-card-back">
+                    <div class="p-6">
+                      <div class="flex items-center space-x-2">
+                        <span class="text-saffron text-2xl"><i class="fas fa-handshake text-gray-700"></i></span>
+                        <h2 class="text-2xl font-bold text-saffron">Collaboration</h2>
+                      </div>
+
+                      <p class="text-sm text-gray-600 mb-2 font-medium mt-2">
+                        Partner for investment, supply chain, and growth.
+                      </p>
+
+                      <!-- Tags -->
+                      <div class="flex flex-wrap gap-2 mt-4">
+                        <span
+                          class="bg-green-50 text-green-700 px-4 py-2 rounded-full text-sm font-semibold border border-green-200 shadow transition duration-300 hover:bg-green-200 hover:text-green-800 hover:border-green-300 hover:shadow-md">
+                          Investment
+                        </span>
+                        <span
+                          class="bg-green-50 text-green-700 px-4 py-2 rounded-full text-sm font-semibold border border-green-200 shadow transition duration-300 hover:bg-green-200 hover:text-green-800 hover:border-green-300 hover:shadow-md">Joint
+                          Venture</span>
+                        <span
+                          class="bg-green-50 text-green-700 px-4 py-2 rounded-full text-sm font-semibold border border-green-200 shadow transition duration-300 hover:bg-green-200 hover:text-green-800 hover:border-green-300 hover:shadow-md">Supply
+                          Chain</span>
+                        <span
+                          class="bg-green-50 text-green-700 px-4 py-2 rounded-full text-sm font-semibold border border-green-200 shadow transition duration-300 hover:bg-green-200 hover:text-green-800 hover:border-green-300 hover:shadow-md">Market
+                          Access</span>
+                        <span
+                          class="bg-green-50 text-green-700 px-4 py-2 rounded-full text-sm font-semibold border border-green-200 shadow transition duration-300 hover:bg-green-200 hover:text-green-800 hover:border-green-300 hover:shadow-md">Growth</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Another Card -->
+            <div class="card swiper-slide">
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                    <div class="image-content">
+                      <span class="overlay"></span>
+                      <div class="card-image">
+                        <img src="assets/images/ev-power.jpg" alt="Rajesh Mukhija" class="card-img">
+                      </div>
+                    </div>
+                    <div class="card-content">
+                      <h2 class="name">Rajesh Mukhija</h2>
+                      <p class="description">Founder</p>
+                    </div>
+                  </div>
+
+                  <div class="flip-card-back">
+                    <h2 class="text-xl font-bold">About Rajesh</h2>
+                    <p class="text-sm">Founder with 15+ years of leadership experience in technology and business development.</p>
+                    <button class="button">Know More</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Another Card -->
+            <div class="card swiper-slide">
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                    <div class="image-content">
+                      <span class="overlay"></span>
+                      <div class="card-image">
+                        <img src="assets/images/ev-power.jpg" alt="Sarah Johnson" class="card-img">
+                      </div>
+                    </div>
+                    <div class="card-content">
+                      <h2 class="name">Sarah Johnson</h2>
+                      <p class="description">CTO</p>
+                    </div>
+                  </div>
+
+                  <div class="flip-card-back">
+                    <h2 class="text-xl font-bold">About Sarah</h2>
+                    <p class="text-sm">Technology expert with a passion for innovation and digital transformation.</p>
+                    <button class="button">View Profile</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Another Card -->
+            <div class="card swiper-slide">
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                    <div class="image-content">
+                      <span class="overlay"></span>
+                      <div class="card-image">
+                        <img src="assets/images/ev-power.jpg" alt="Michael Chen" class="card-img">
+                      </div>
+                    </div>
+                    <div class="card-content">
+                      <h2 class="name">Michael Chen</h2>
+                      <p class="description">Product Manager</p>
+                    </div>
+                  </div>
+
+                  <div class="flip-card-back">
+                    <h2 class="text-xl font-bold">About Michael</h2>
+                    <p class="text-sm">Product management expert with focus on user-centered design and agile methodologies.</p>
+                    <button class="button">Connect</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Another Card -->
+            <div class="card swiper-slide">
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                    <div class="image-content">
+                      <span class="overlay"></span>
+                      <div class="card-image">
+                        <img src="assets/images/ev-power.jpg" alt="Lisa Anderson" class="card-img">
+                      </div>
+                    </div>
+                    <div class="card-content">
+                      <h2 class="name">Lisa Anderson</h2>
+                      <p class="description">Marketing Director</p>
+                    </div>
+                  </div>
+
+                  <div class="flip-card-back">
+                    <h2 class="text-xl font-bold">About Lisa</h2>
+                    <p class="text-sm">Marketing strategist with expertise in brand development and digital campaigns.</p>
+                    <button class="button">Contact</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="swiper-button-next swiper-navBtn"></div>
+        <div class="swiper-button-prev swiper-navBtn"></div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </section>
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  
+  <script>
+    // Initialize Swiper
+    var swiper = new Swiper(".slide-container", {
+      slidesPerView: 3,
+      spaceBetween: 25,
+      loop: true,
+      autoplay: {
+        delay: 5000,
+      },
+      centerSlide: true,
+      fade: true,
+      grabCursor: true,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+        dynamicBullets: true,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      breakpoints: {
+        0: { 
+          slidesPerView: 1,
+          spaceBetween: 15
+        },
+        768: { 
+          slidesPerView: 2,
+          spaceBetween: 20
+        },
+        1024: { 
+          slidesPerView: 3,
+          spaceBetween: 25
+        },
+      },
+    });
+  </script>
+</body>
+</html>
