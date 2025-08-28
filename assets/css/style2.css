@@ -100,7 +100,8 @@ body {
     font-family: 'Poppins', sans-serif;
     font-optical-sizing: auto;
     font-style: normal;   
-    background: rgba(212, 241, 244, 0.04);     
+    /* background: rgba(212, 241, 244, 0.04);     */
+    background-color: #f0f2f5; 
 }
 
 .h-90{
@@ -206,6 +207,7 @@ main {
     width: 100%;
     background: url(../images/bg.png) no-repeat;
     background-position: left center;
+  
 }
 .rightbg {
     width: 100%;
@@ -994,3 +996,184 @@ transition: all 1s;
 }
 
 
+/* Active Tab */
+
+.tabs-container {
+  width: 100%;
+  margin: 2rem auto; 
+  padding: 0 1rem;
+}
+
+/* Tab buttons (desktop) */
+.tab-buttons {
+  display: flex;
+  overflow: hidden;
+}
+
+.tab-link {
+  flex: 1;
+  height: auto;
+  width: auto;
+  /* padding: 0.8rem 1rem;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  font-weight: 600;
+  color: #374151; */
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.tab-link.active { 
+  color: #111827;
+  box-shadow: inset 0 -3px 0 #6366f1;
+  position: relative;
+  margin-bottom: 10px;
+ 
+}
+.tab-link.active::after {
+  content: '';
+  top: 100%;
+  position: absolute;   
+  border-top: 10px solid #6366f1; 
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 99;
+}
+/* Content (desktop) */
+.tab-content-wrapper {
+  border: 1px solid #e5e7eb;
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+  /* background: white; */
+}
+
+.tab-content {
+  display: none;
+  padding: 1.5rem;
+  animation: fadeIn 0.4s ease;
+}
+
+.tab-content.active {
+  display: block;
+  margin-top: -10px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ✅ Mobile (accordion style) */
+@media (max-width: 640px) {
+  .tab-buttons {
+    flex-direction: column;
+    border-radius: 10px;
+  }
+  .tab-link {
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  .tab-link:last-child {
+    border-bottom: none;
+  }
+
+  /* hide desktop wrapper */
+  .tab-content-wrapper {
+    display: none;
+  }
+
+  /* Accordion-style content below each button */
+  .tab-link + .accordion-content {
+    display: none;
+    padding: 1rem;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-top: none;
+  }
+  .tab-link.active + .accordion-content {
+    display: block;
+    animation: fadeIn 0.4s ease;
+  }
+}
+
+
+/* Active Tab */
+
+/*   */
+
+.word-cloud-wrapper {
+            margin: 30px 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .word-cloud-container {
+            position: relative;
+            width: 100%;
+            height: 60vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* background-color: #ffffff;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-radius: 15px; */
+            overflow: hidden;
+        }
+        
+        .main-welcome {
+            font-size: clamp(40px, 10vw, 150px);
+            font-weight: 800;
+            color: #34495e;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .translations-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+        
+        .translation-word {
+            position: absolute;
+            white-space: nowrap;
+            opacity: 0;
+            animation: fadeInFloat 10s ease-in-out infinite alternate;
+        }
+        
+        @keyframes fadeInFloat {
+            0% {
+                opacity: 0;
+                transform: translateY(20px) scale(0.8);
+            }
+            50% {
+                opacity: 1;
+                transform: translateY(-5px) scale(1);
+            }
+            100% {
+                opacity: 0.5;
+                transform: translateY(20px) scale(0.9);
+            }
+        }
+        
+        .cloud-title {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #2c3e50;
+            font-size: 1.5rem;
+        }
+/*    */
