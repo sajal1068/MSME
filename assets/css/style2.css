@@ -899,10 +899,10 @@ main {
 }
 @media (max-width: 767.98px) { 
   .swiper-button-prev {
-    left: -15px!important;
+    left: -9px!important;
   }
   .swiper-button-next {
-    right: -15px!important;
+    right: -9px!important;
   }
 }
 
