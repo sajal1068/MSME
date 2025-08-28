@@ -862,14 +862,7 @@ main {
 .swiper-pagination-bullet {
   background: #111827;
 }
-.swiper-button-next,
-.swiper-button-prev {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #111;
-  z-index: 10;
-}
+
 
 .swiper-button-next,
 .swiper-button-prev {
@@ -884,7 +877,15 @@ main {
   align-items: center;
   transition: background 0.3s, transform 0.2s;
 }
-
+.swiper-button-next,
+.swiper-button-prev {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #111;
+  z-index: 10;
+  margin: auto;
+}
 .swiper-button-next::after,
 .swiper-button-prev::after {
   font-size: 18px !important;
@@ -897,7 +898,12 @@ main {
   background: #0D47A1;
 }
 @media (max-width: 767.98px) { 
-  
+  .swiper-button-prev {
+    left: -25px!important;
+  }
+  .swiper-button-next {
+    right: -25px!important;
+  }
 }
 
 @media (min-width: 768px) {
