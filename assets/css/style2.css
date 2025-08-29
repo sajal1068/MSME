@@ -754,6 +754,7 @@ main {
   align-items: stretch;
   height: auto;  
   box-sizing: border-box;
+  padding: 10px;
 }
 .ratio-box {
   width: 100%;
